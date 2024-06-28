@@ -1,6 +1,3 @@
-# A LBM-DA coupling solver for simulating pollutant dispersion in real time
-# Author : Jitao (jitao.cai@outlook.com)
-
 import lbmSolver as lbm
 import convertor as con
 import taichi as ti
@@ -14,12 +11,10 @@ matplotlib.use('TkAgg')
 ti.init(arch=ti.gpu)
 
 def regularized_pinv(A, lambda_reg=1e-8):
-    # A: 原矩阵
-    # lambda_reg: 正则化参数
-    identity_matrix = np.eye(A.shape[1])  # 创建一个单位矩阵，大小与A的列数相同
-    regularized_A = A.T @ A + lambda_reg * identity_matrix  # 增加正则化项
-    inverse_regularized_A = np.linalg.inv(regularized_A)  # 计算正则化后的矩阵的逆
-    pinv_A = inverse_regularized_A @ A.T  # 计算伪逆
+    identity_matrix = np.eye(A.shape[1]) 
+    regularized_A = A.T @ A + lambda_reg * identity_matrix  
+    inverse_regularized_A = np.linalg.inv(regularized_A)  
+    pinv_A = inverse_regularized_A @ A.T  
     return pinv_A
 
 # physical parameter
