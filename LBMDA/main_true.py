@@ -1,6 +1,3 @@
-# A LBM-DA coupling solver for simulating pollutant dispersion in real time
-# Author : Jitao (jitao.cai@outlook.com)
-
 import lbmSolver as lbm
 import convertor as con
 import taichi as ti
